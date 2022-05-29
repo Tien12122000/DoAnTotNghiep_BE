@@ -24,6 +24,11 @@ namespace DoAnTotNghiep.Controllers
         {
             return _donHangBLL.getAllDonHang();
         }
+        [HttpGet("Get-Donhang-Number")]
+        public int GetDonhangNumber()
+        {
+            return _donHangBLL.getAllDonHang().Count;
+        }
         [HttpGet("Danh-Sach-Don-Hang-paginate/{pageIndex}")]
         public List<DonHang> GetDonHangs(string pageIndex)
         {
