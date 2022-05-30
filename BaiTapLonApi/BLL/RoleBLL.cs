@@ -1,5 +1,6 @@
 ﻿using DoAnTotNghiep.DAL;
 using DoAnTotNghiep.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,8 +13,10 @@ namespace DoAnTotNghiep.BLL
     {
         DataTable dt;
         IRoleRepository _dats;
-        public RoleBLL(IRoleRepository dats)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public RoleBLL(IRoleRepository dats, IHttpContextAccessor httpContextAccessor)
         {
+            _httpContextAccessor = httpContextAccessor;
             this._dats = dats;
         }
         public List<RoleModel> GetRoleList()
@@ -31,6 +34,12 @@ namespace DoAnTotNghiep.BLL
                 li.Add(role);
             }
             return li;
+        }
+        public bool CheckRole(string accessToken)
+        {
+            //HttpContext httpContext = new HttpContext();
+            //_httpContextAccessor.HttpContext.User.
+            return true;
         }
     }
 }

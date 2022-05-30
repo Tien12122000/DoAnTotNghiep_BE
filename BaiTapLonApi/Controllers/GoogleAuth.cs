@@ -96,6 +96,13 @@ namespace DoAnTotNghiep.Controllers
                         //startWorkDate = user.StartWorkDate
                     }
                 };
+                //set cookies to store AccessToken
+                CookieOptions option = new CookieOptions();
+
+                    option.Expires = DateTime.Now.AddMinutes(20);
+                    option.Expires = DateTime.Now.AddMilliseconds(10);
+
+                Response.Cookies.Append("GuidKeyToStoreAccessToken", Restoken.ToString(), option);
                 return Ok(Restoken);
             }
             catch (Exception e)

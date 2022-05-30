@@ -1,12 +1,7 @@
 ﻿using DoAnTotNghiep.DAL.DataHelper;
-using DoAnTotNghiep.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DoAnTotNghiep.DAL
 {
@@ -24,8 +19,9 @@ namespace DoAnTotNghiep.DAL
         }
         public DataTable RoleModels()
         {
-            dt = _dataHelper.ExecuteQueryReturnTable("Get_all_Role");
+            dt = _dataHelper.ExecuteQueryReturnTable("Get_all_Roles");
             return dt;
         }
+        
     }
 }

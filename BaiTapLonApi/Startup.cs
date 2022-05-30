@@ -62,6 +62,8 @@ namespace DoAnTotNghiep
             services.AddTransient<IRoleBLL, RoleBLL>();
             services.AddTransient<IRoleRepository, RoleRepository>();
 
+            services.AddHttpContextAccessor();
+
 
             //google login settingss
             services.AddAuthentication()
