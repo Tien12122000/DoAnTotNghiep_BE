@@ -58,7 +58,11 @@ namespace DoAnTotNghiep
             services.AddTransient<IChiTietGioHangBLL, ChiTietGioHangBLL>();
             services.AddTransient<IChiTietGioHangRepository, ChiTietGioHangRepository>();
 
-           
+
+            services.AddTransient<IRoleBLL, RoleBLL>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
+
+
             //google login settingss
             services.AddAuthentication()
             .AddGoogle(options =>
