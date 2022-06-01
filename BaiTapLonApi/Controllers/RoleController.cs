@@ -23,5 +23,28 @@ namespace DoAnTotNghiep.Controllers
         {
             return _roleBll.GetRoleList();
         }
+        [HttpGet("CheckRole/{userId}")]
+        public IActionResult CheckRole(string userID)
+        {
+            try
+            {
+                var listRole = _roleBll.GetRoleList();
+                if (listRole==null)
+                {
+                    throw new Exception();
+                }
+                var role = listRole.Select(m => m.UserId == int.Parse(userID) && m.RoleName.Trim().ToLower() == Role.Admin.ToLower()).FirstOrDefault();
+                if (!role)
+                {
+                    throw new Exception();
+                }
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+                throw;
+            }
+        }
     }
 }

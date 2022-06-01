@@ -35,11 +35,27 @@ namespace DoAnTotNghiep.BLL
             }
             return li;
         }
-        public bool CheckRole(string accessToken)
+        public bool ChecAdminkRole(string userID)
         {
-            //HttpContext httpContext = new HttpContext();
-            //_httpContextAccessor.HttpContext.User.
-            return true;
+            try
+            {
+                var listRole = GetRoleList();
+                if (listRole == null)
+                {
+                    throw new Exception();
+                }
+                var role = listRole.Select(m => m.UserId == int.Parse(userID) && m.RoleName.Trim().ToLower() == Role.Admin.ToLower()).FirstOrDefault();
+                if (!role)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
     }
 }

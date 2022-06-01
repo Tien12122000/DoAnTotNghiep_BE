@@ -21,9 +21,11 @@ namespace DoAnTotNghiep.Controllers
     public class GoogleAuth : ControllerBase
     {
         private IUserBLL _UserBLL;
-        public GoogleAuth(IUserBLL userBusiness)
+        private readonly IRoleBLL _roleBLL;
+        public GoogleAuth(IUserBLL userBusiness, IRoleBLL roleBLL)
         {
             _UserBLL = userBusiness;
+            _roleBLL = roleBLL;
         }
         [HttpPost("Google-Auth")]
         public IActionResult GoogleLogin([FromBody] GoogleAuthRes googleAuthRes)
@@ -38,7 +40,7 @@ namespace DoAnTotNghiep.Controllers
 
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest();
             }
@@ -49,6 +51,7 @@ namespace DoAnTotNghiep.Controllers
 
             try
             {
+                string role = Role.User.ToLower();
                 HttpClient client = new HttpClient();
                 var urlProfile = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + access_token;
 
@@ -60,7 +63,10 @@ namespace DoAnTotNghiep.Controllers
 
                 var user = _UserBLL.GetUserByEmail(serStatus.email);
                 if (user == null) return null;
-
+                if (_roleBLL.ChecAdminkRole(user.Ma.ToString()) == true)
+                {
+                    role = Role.Admin.ToLower();
+                }
                 var tokenHandler = new JwtSecurityTokenHandler();
                 //string SecretKey = configuration["ClientId"];
                 var key = Encoding.ASCII.GetBytes("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");
@@ -81,6 +87,7 @@ namespace DoAnTotNghiep.Controllers
                 {
                     AccessToken = tokenHandler.WriteToken(token),
                     Expires = expires,
+                    Role = role,
                     User = new TokenGoogleVM.GoogleUserOutputData()
                     {
                         id = user.Ma.ToString(),
@@ -90,17 +97,13 @@ namespace DoAnTotNghiep.Controllers
                         picture = serStatus.picture,
                         family_name = serStatus.family_name,
                         locale = serStatus.locale,
-                        //Phone = user.PhoneNumber
-                        //isActive = user.IsAcive,
-                        //position = user.PositionId.ToString(),
-                        //startWorkDate = user.StartWorkDate
                     }
                 };
                 //set cookies to store AccessToken
                 CookieOptions option = new CookieOptions();
 
-                    option.Expires = DateTime.Now.AddMinutes(20);
-                    option.Expires = DateTime.Now.AddMilliseconds(10);
+                option.Expires = DateTime.Now.AddMinutes(20);
+                option.Expires = DateTime.Now.AddMilliseconds(10);
 
                 Response.Cookies.Append("GuidKeyToStoreAccessToken", Restoken.ToString(), option);
                 return Ok(Restoken);
@@ -128,7 +131,7 @@ namespace DoAnTotNghiep.Controllers
                 if (user == null) return null;
                 return Ok(serStatus);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest();
             }

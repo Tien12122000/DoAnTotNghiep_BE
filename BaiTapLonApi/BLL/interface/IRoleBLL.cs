@@ -9,5 +9,6 @@ namespace DoAnTotNghiep.BLL
     public interface IRoleBLL
     {
         List<RoleModel> GetRoleList();
+        public bool ChecAdminkRole(string userID);
     }
 }
