@@ -88,8 +88,7 @@ namespace DoAnTotNghiep.DAL
             dt = _dataHelper.ExecuteQueryReturnTable("LoaiTuiPagination", listName, listValue);
             return dt;
         }
-        public
-        DataTable GetLoaiTuiByID(int id)
+        public DataTable GetLoaiTuiByID(int id)
         {
             List<string> listName = new List<string>();
             List<string> listValue = new List<string>();

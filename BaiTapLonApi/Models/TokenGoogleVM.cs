@@ -10,6 +10,7 @@ namespace DoAnTotNghiep.Models
         public string AccessToken { get; set; }
         public DateTime Expires { get; set; }
         public GoogleUserOutputData User { get; set; }
+        public string Role { get; set; }
         public class GoogleUserOutputData
         {
             public string id { get; set; }
