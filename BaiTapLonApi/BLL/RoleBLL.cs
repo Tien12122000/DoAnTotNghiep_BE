@@ -45,11 +45,11 @@ namespace DoAnTotNghiep.BLL
                     throw new Exception();
                 }
                 var role = listRole.Select(m => m.UserId == int.Parse(userID) && m.RoleName.Trim().ToLower() == Role.Admin.ToLower()).FirstOrDefault();
-                if (!role)
+                if (role)
                 {
-                    return false;
+                    return true;
                 }
-                return true;
+                return false;
             }
             catch (Exception)
             {
