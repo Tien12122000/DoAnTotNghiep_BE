@@ -10,7 +10,7 @@ using DoAnTotNghiep.DAL.DataHelper;
 
 namespace DoAnTotNghiep.BLL
 {
-    public class LoaiTuiXachBLL:ILoaiTuiXachBLL
+    public class LoaiTuiXachBLL : ILoaiTuiXachBLL
     {
         DataTable dt;
         ILoaiRepository _dats;
@@ -44,7 +44,7 @@ namespace DoAnTotNghiep.BLL
         }
         public void Updateloai(string maloai, string tenloai, string mota)
         {
-            _dats.Updateloaitui(maloai,tenloai,mota);
+            _dats.Updateloaitui(maloai, tenloai, mota);
         }
         public List<LoaiTuiXach> Loaituipaginate(int pageIndex)
         {
@@ -71,6 +71,40 @@ namespace DoAnTotNghiep.BLL
             Type.TenLoai = dt.Rows[0][1].ToString();
             Type.MoTa = dt.Rows[0][2].ToString();
             return Type;
+        }
+
+        public List<LoaiTuiXach> SearchLoaiTuiPaginate(int pageIndex, string key)
+        {
+            dt = new DataTable();
+            dt = _dats.SearchLoaiTuiPaginate(pageIndex, key);
+            LoaiTuiXach tui;
+            List<LoaiTuiXach> tuiLi = new List<LoaiTuiXach>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                tui = new LoaiTuiXach();
+                tui.MaLoaiTuiXach = int.Parse(dt.Rows[i][1].ToString());
+                tui.TenLoai = dt.Rows[i][2].ToString();
+                tui.MoTa = dt.Rows[i][3].ToString();
+                tuiLi.Add(tui);
+            }
+            return tuiLi;
+        }
+
+        public List<LoaiTuiXach> countLoaiSearchin4(string key)
+        {
+            dt = new DataTable();
+            dt = _dats.countLoaiSearchin4(key);
+            LoaiTuiXach tui;
+            List<LoaiTuiXach> tuiLi = new List<LoaiTuiXach>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                tui = new LoaiTuiXach();
+                tui.MaLoaiTuiXach = int.Parse(dt.Rows[i][0].ToString());
+                tui.TenLoai = dt.Rows[i][1].ToString();
+                tui.MoTa = dt.Rows[i][2].ToString();
+                tuiLi.Add(tui);
+            }
+            return tuiLi;
         }
     }
 }

@@ -15,5 +15,7 @@ namespace DoAnTotNghiep.DAL
         public void Updateloaitui(string maloai, string tenloai, string mota);
         DataTable getAllPaginate(int pageIndex);
         DataTable GetLoaiTuiByID(int id);
+        DataTable SearchLoaiTuiPaginate(int pageIndex, string key);
+        DataTable countLoaiSearchin4(string key);
     }
 }
