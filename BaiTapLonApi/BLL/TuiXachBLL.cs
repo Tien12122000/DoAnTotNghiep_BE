@@ -41,6 +41,8 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][3].ToString());
                 tui.MoTa = dt.Rows[i][4].ToString();
                 tui.HinhAnh = dt.Rows[i][5].ToString();
+                tui.soluong = int.Parse(dt.Rows[i][6].ToString());
+                tui.luotmua = int.Parse(dt.Rows[i][7].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
@@ -61,6 +63,8 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][4].ToString());
                 tui.MoTa = dt.Rows[i][5].ToString();
                 tui.HinhAnh = dt.Rows[i][6].ToString();
+                tui.soluong = int.Parse(dt.Rows[i][7].ToString());
+                tui.luotmua = int.Parse(dt.Rows[i][8].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
@@ -81,6 +85,8 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][4].ToString());
                 tui.MoTa = dt.Rows[i][5].ToString();
                 tui.HinhAnh = dt.Rows[i][6].ToString();
+                tui.soluong = int.Parse(dt.Rows[i][7].ToString());
+                tui.luotmua = int.Parse(dt.Rows[i][8].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
@@ -103,6 +109,8 @@ namespace DoAnTotNghiep.BLL
             tui.Gia = float.Parse(dt.Rows[0][3].ToString());
             tui.MoTa = dt.Rows[0][4].ToString();
             tui.HinhAnh = dt.Rows[0][5].ToString();
+            tui.soluong = int.Parse(dt.Rows[0][6].ToString());
+            tui.luotmua = int.Parse(dt.Rows[0][7].ToString());
             return tui;
         }
 
@@ -121,6 +129,8 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][3].ToString());
                 tui.MoTa = dt.Rows[i][4].ToString();
                 tui.HinhAnh = dt.Rows[i][5].ToString();
+                tui.soluong = int.Parse(dt.Rows[i][6].ToString());
+                tui.luotmua = int.Parse(dt.Rows[i][7].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
@@ -141,6 +151,8 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][4].ToString());
                 tui.MoTa = dt.Rows[i][5].ToString();
                 tui.HinhAnh = dt.Rows[i][6].ToString();
+                tui.soluong = int.Parse(dt.Rows[i][7].ToString());
+                tui.luotmua = int.Parse(dt.Rows[i][8].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
@@ -160,9 +172,16 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][3].ToString());
                 tui.MoTa = dt.Rows[i][4].ToString();
                 tui.HinhAnh = dt.Rows[i][5].ToString();
+                tui.soluong = int.Parse(dt.Rows[i][6].ToString());
+                tui.luotmua = int.Parse(dt.Rows[i][7].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
+        }
+
+        public void updateQuantity(int id, int quantity, int luotmua)
+        {
+            _dats.updateQuantity(id, quantity, luotmua);
         }
     }
 }

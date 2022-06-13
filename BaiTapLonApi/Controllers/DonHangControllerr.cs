@@ -1,4 +1,5 @@
 ﻿using DoAnTotNghiep.BLL;
+using DoAnTotNghiep.Common;
 using DoAnTotNghiep.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +15,13 @@ namespace DoAnTotNghiep.Controllers
     public class DonHangControllerr : ControllerBase
     {
         IDonHangBLL _donHangBLL;
-        public DonHangControllerr(IDonHangBLL donHangBLL)
+        IChiTietDonHangBLL _chiTietDonHangBLL;
+        ITuiXachBLL _tuiXachBLL;
+        public DonHangControllerr(IDonHangBLL donHangBLL, ITuiXachBLL tuiXachBLL, IChiTietDonHangBLL chiTietDonHangBLL)
         {
             _donHangBLL = donHangBLL;
+            _tuiXachBLL = tuiXachBLL;
+            _chiTietDonHangBLL = chiTietDonHangBLL;
         }
 
         [Route("Get-all-Donhang")]
@@ -53,10 +58,53 @@ namespace DoAnTotNghiep.Controllers
             }
             return li;
         }
+        //[Route("cap-nhat-don-hang/{id}/{trangthaidonhang}")]
+        //public void UpdateDonHang(string id, string trangthaidonhang)
+        //{
+        //    _donHangBLL.UpdateDonHang(id, trangthaidonhang);
+        //}
         [Route("cap-nhat-don-hang/{id}/{trangthaidonhang}")]
-        public void UpdateDonHang(string id, string trangthaidonhang)
+        public IActionResult UpdateSoluongVaLuotMuaSanPham(string id, string trangthaidonhang)
         {
-            _donHangBLL.UpdateDonHang(id, trangthaidonhang);
+            if (trangthaidonhang.Trim().ToLower() == Constant.BillStatus.DELIVERED.Trim().ToLower())
+            {
+                var listBillDetail = _chiTietDonHangBLL.GetAllChiTietDonByID(int.Parse(id));
+                try
+                {
+                    if (listBillDetail == null|| listBillDetail.Count == 0)
+                    {
+                        _donHangBLL.UpdateDonHang(id, trangthaidonhang);
+                    }
+                    else
+                        foreach (var item in listBillDetail)
+                        {
+                            var tuiXach = _tuiXachBLL.GetTuiByID(int.Parse(item.MaTuiXach.ToString()));
+                            tuiXach.soluong -= 1;
+                            tuiXach.luotmua += 1;
+                            _tuiXachBLL.updateQuantity(tuiXach.MaTuiXach, tuiXach.soluong, tuiXach.luotmua);
+                        }
+                    return Ok();
+                }
+                catch (Exception e)
+                {
+                    return BadRequest();
+                    throw;
+                }
+            }
+            else
+            {
+                try
+                {
+                    _donHangBLL.UpdateDonHang(id, trangthaidonhang);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                    throw;
+                }
+            }
+            //_tuiXachBLL.updateQuantity(id, trangthaidonhang);
         }
         [Route("Del-Don-Hang/{id}")]
         public void DelDonHang(string id)
