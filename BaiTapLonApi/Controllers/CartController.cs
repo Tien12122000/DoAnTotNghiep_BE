@@ -133,7 +133,7 @@ namespace DoAnTotNghiep.Controllers
                     _userBLL.addUser(user.TenDangNhap, user.MatKhau);
                     donHang.MaKhachHang = ma;
                     donHang.MaNhaVien = 1;
-                    donHang.NgayDatHang = DateTime.Parse(DateTime.Now.ToShortTimeString());
+                    donHang.NgayDatHang = DateTime.Now.ToShortTimeString();
                     donHang.DiaChiGiaoHang = tempBill.Address;
                     donHang.SoDienThoai = tempBill.Phone;
                     donHang.TrangThaiDonHang = "Chưa hoàn thành";
@@ -223,10 +223,10 @@ namespace DoAnTotNghiep.Controllers
                     _userBLL.updateUsers(tempBill.Email, tempBill.Pass);
                     donHang.MaKhachHang = makhanghang;
                     donHang.MaNhaVien = 1;
-                    donHang.NgayDatHang = DateTime.Parse(DateTime.Now.ToShortTimeString());
+                    donHang.NgayDatHang = DateTime.Now.ToShortTimeString();
                     donHang.DiaChiGiaoHang = tempBill.Address;
                     donHang.SoDienThoai = tempBill.Phone;
-                    donHang.TrangThaiDonHang = "Chưa hoàn thành";
+                    donHang.TrangThaiDonHang = "Unfinished";
                     donHang.TongTien = tempBill.Tongtien;
                     donHang.GhiChu = tempBill.Note;
                     donHang.tenKhachHang = tempBill.Ten;

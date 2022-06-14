@@ -32,7 +32,7 @@ namespace DoAnTotNghiep.BLL
                 donHang.MaDonHang = int.Parse(dt.Rows[i][0].ToString());
                 donHang.MaKhachHang = int.Parse(dt.Rows[i][1].ToString());
                 donHang.MaNhaVien = int.Parse(dt.Rows[i][2].ToString());
-                donHang.NgayDatHang = DateTime.Parse(dt.Rows[i][3].ToString());
+                donHang.NgayDatHang = dt.Rows[i][3].ToString();
                 donHang.DiaChiGiaoHang = dt.Rows[i][4].ToString();
                 donHang.SoDienThoai = dt.Rows[i][5].ToString();
                 donHang.TrangThaiDonHang = dt.Rows[i][6].ToString();
@@ -59,7 +59,7 @@ namespace DoAnTotNghiep.BLL
                 donHang.MaDonHang = int.Parse(dt.Rows[i][1].ToString());
                 donHang.MaKhachHang = int.Parse(dt.Rows[i][2].ToString());
                 donHang.MaNhaVien = int.Parse(dt.Rows[i][3].ToString());
-                donHang.NgayDatHang = DateTime.Parse(dt.Rows[i][4].ToString());
+                donHang.NgayDatHang = dt.Rows[i][4].ToString();
                 donHang.DiaChiGiaoHang = dt.Rows[i][5].ToString();
                 donHang.SoDienThoai = dt.Rows[i][6].ToString();
                 donHang.TrangThaiDonHang = dt.Rows[i][7].ToString();
@@ -81,7 +81,7 @@ namespace DoAnTotNghiep.BLL
                 donHang.MaDonHang = int.Parse(dt.Rows[i][0].ToString());
                 donHang.MaKhachHang= int.Parse(dt.Rows[i][1].ToString());
                 donHang.MaNhaVien= int.Parse(dt.Rows[i][2].ToString());
-                donHang.NgayDatHang = DateTime.Parse(dt.Rows[i][3].ToString());
+                donHang.NgayDatHang = dt.Rows[i][3].ToString();
                 donHang.DiaChiGiaoHang = dt.Rows[i][4].ToString();
                 donHang.SoDienThoai = dt.Rows[i][5].ToString();
                 donHang.TrangThaiDonHang = dt.Rows[i][6].ToString();
@@ -103,7 +103,7 @@ namespace DoAnTotNghiep.BLL
                 donHang.MaDonHang = int.Parse(dt.Rows[i][0].ToString());
                 donHang.MaKhachHang = int.Parse(dt.Rows[i][1].ToString());
                 donHang.MaNhaVien = int.Parse(dt.Rows[i][2].ToString());
-                donHang.NgayDatHang = DateTime.Parse(dt.Rows[i][3].ToString());
+                donHang.NgayDatHang = dt.Rows[i][3].ToString();
                 donHang.DiaChiGiaoHang = dt.Rows[i][4].ToString();
                 donHang.SoDienThoai = dt.Rows[i][5].ToString();
                 donHang.TrangThaiDonHang = dt.Rows[i][6].ToString();
@@ -125,7 +125,7 @@ namespace DoAnTotNghiep.BLL
                 donHang.MaDonHang = int.Parse(dt.Rows[i][1].ToString());
                 donHang.MaKhachHang = int.Parse(dt.Rows[i][2].ToString());
                 donHang.MaNhaVien = int.Parse(dt.Rows[i][3].ToString());
-                donHang.NgayDatHang = DateTime.Parse(dt.Rows[i][4].ToString());
+                donHang.NgayDatHang = dt.Rows[i][4].ToString();
                 donHang.DiaChiGiaoHang = dt.Rows[i][5].ToString();
                 donHang.SoDienThoai = dt.Rows[i][6].ToString();
                 donHang.TrangThaiDonHang = dt.Rows[i][7].ToString();
@@ -147,7 +147,7 @@ namespace DoAnTotNghiep.BLL
                 donHang.MaDonHang = int.Parse(dt.Rows[i][1].ToString());
                 donHang.MaKhachHang = int.Parse(dt.Rows[i][2].ToString());
                 donHang.MaNhaVien = int.Parse(dt.Rows[i][3].ToString());
-                donHang.NgayDatHang = DateTime.Parse(dt.Rows[i][4].ToString());
+                donHang.NgayDatHang = dt.Rows[i][4].ToString();
                 donHang.DiaChiGiaoHang = dt.Rows[i][5].ToString();
                 donHang.SoDienThoai = dt.Rows[i][6].ToString();
                 donHang.TrangThaiDonHang = dt.Rows[i][7].ToString();
