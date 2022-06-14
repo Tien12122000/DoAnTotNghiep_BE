@@ -15,7 +15,7 @@ namespace DoAnTotNghiep.Models
         public int MaDonHang { get; set; }
         public int? MaKhachHang { get; set; }
         public int? MaNhaVien { get; set; }
-        public DateTime? NgayDatHang { get; set; }
+        public string NgayDatHang { get; set; }
         public string DiaChiGiaoHang { get; set; }
         public string SoDienThoai { get; set; }
         public string TrangThaiDonHang { get; set; }

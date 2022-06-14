@@ -151,8 +151,8 @@ namespace DoAnTotNghiep.BLL
                 tui.Gia = float.Parse(dt.Rows[i][4].ToString());
                 tui.MoTa = dt.Rows[i][5].ToString();
                 tui.HinhAnh = dt.Rows[i][6].ToString();
-                tui.soluong = int.Parse(dt.Rows[i][7].ToString());
-                tui.luotmua = int.Parse(dt.Rows[i][8].ToString());
+                //tui.soluong = int.Parse(dt.Rows[i][7].ToString());
+                //tui.luotmua = int.Parse(dt.Rows[i][8].ToString());
                 tuiLi.Add(tui);
             }
             return tuiLi;
