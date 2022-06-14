@@ -19,5 +19,6 @@ namespace DoAnTotNghiep.BLL
         List<TuiXach> countSearchin4(string key);
         List<TuiXach> getTuiByCateIdPaginate(int index, int id);
         List<TuiXach> getTuiByCateId_all(int id);
+        void updateQuantity(int id, int quantity, int luotmua);
     }
 }

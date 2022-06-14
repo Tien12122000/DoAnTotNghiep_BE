@@ -19,5 +19,6 @@ namespace DoAnTotNghiep.DAL
         DataTable countSearchin4(string key);
         DataTable getTuiByCateIdPaginate(int index, int id);
         DataTable getTuiByCateId_all(int id);
+        void updateQuantity(int id, int quantity, int luotmua);
     }
 }

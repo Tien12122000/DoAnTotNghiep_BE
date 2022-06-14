@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DoAnTotNghiep.DAL
 {
-    public class TuiRepository:ITuiRepositorycs
+    public class TuiRepository: ITuiRepositorycs
     {
         IDataHelper _dataHelper;
         DataTable dt;
@@ -146,6 +146,20 @@ namespace DoAnTotNghiep.DAL
             listValue.Add(id.ToString());
             dt = _dataHelper.ExecuteQueryReturnTable("getTuiByCateId_all", listName, listValue);
             return dt;
+        }
+
+        public void updateQuantity(int id, int quantity, int luotmua)
+        {
+            List<string> listName = new List<string>();
+            List<string> listValue = new List<string>();
+            listName.Add("@quantity");
+            listName.Add("@luotmua");
+            listName.Add("@id");
+            listValue.Add(quantity.ToString());
+            listValue.Add(luotmua.ToString());
+            listValue.Add(id.ToString());
+            listValue.Add(id.ToString());
+            _dataHelper.ExecuteNonSProcedure("Update_Tui_Quantity", listName, listValue);
         }
     }
 }

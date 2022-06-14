@@ -99,5 +99,29 @@ namespace DoAnTotNghiep.DAL
             dt = _dataHelper.ExecuteQueryReturnTable("GetLoaiTuiByID", listName, listValue);
             return dt;
         }
+
+
+        public DataTable countLoaiSearchin4(string key)
+        {
+            List<string> listName = new List<string>();
+            List<string> listValue = new List<string>();
+            listName.Add("@key");
+            listValue.Add(key.ToString());
+            dt = _dataHelper.ExecuteQueryReturnTable("countLoaiSearchin4", listName, listValue);
+            return dt;
+        }
+
+        public DataTable SearchLoaiTuiPaginate(int pageIndex, string key)
+        {
+            List<string> listName = new List<string>();
+            List<string> listValue = new List<string>();
+            listName.Add("@page_index");
+            listName.Add("@page_size");
+            listName.Add("@hoten");
+            listValue.Add(pageIndex.ToString());
+            listValue.Add("8");
+            listValue.Add(key);
+            return dt = _dataHelper.ExecuteQueryReturnTable("sp_LoaiTuiXach_search", listName, listValue);
+        }
     }
 }

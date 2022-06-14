@@ -120,5 +120,38 @@ namespace DoAnTotNghiep.Controllers
                 return BadRequest();
             }
         }
+        [Route("Search-Record-count/{key}")]
+        public List<int> Search_Record_count(string key)
+        {
+            List<int> li = new List<int>();
+            if (_loaiTuixach.countLoaiSearchin4(key).Count > 0)
+            {
+                int a = 0;
+                if ((_loaiTuixach.countLoaiSearchin4(key).Count % 8) == 0)
+                {
+                    a = _loaiTuixach.countLoaiSearchin4(key).Count / 1;
+                }
+                else
+                {
+                    a = (_loaiTuixach.countLoaiSearchin4(key).Count / 8) + 1;
+                }
+                //int a = (_Tuixach.getdatatuixach().Count / 8) + 1;
+                for (int i = 1; i <= a; i++)
+                {
+                    li.Add(i);
+                }
+                return li;
+            }
+            if (li.Count == 0)
+            {
+                li.Add(1);
+            }
+            return li;
+        }
+        [Route("Search-Loai-Tui-Paginate/{pageIndex}/{key}")]
+        public List<LoaiTuiXach> SearchTuiPaginate(int pageIndex, string key)
+        {
+            return _loaiTuixach.SearchLoaiTuiPaginate(pageIndex, key);
+        }
     }
 }
