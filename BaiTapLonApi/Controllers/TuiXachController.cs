@@ -256,10 +256,10 @@ namespace DoAnTotNghiep.Controllers
             return li;
         }
 
-        [Route("Get-related-products/{cateId}")]
-        public List<TuiXach> GetRelatedProductsByCateId(int cateId)
+        [Route("Get-related-products/{id}")]
+        public List<TuiXach> GetRelatedProductsByCateId(int id)
         {
-            var listProduct = _Tuixach.getTuiByCateId_all(cateId);
+            var listProduct = _Tuixach.getTuiByCateId_all(id);
             return listProduct.Take(3).ToList();
         }
     }
